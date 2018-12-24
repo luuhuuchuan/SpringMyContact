@@ -24,9 +24,9 @@
 				<a th:href="@{/contact/create}" class="btn btn-success pull-left">
 					<span class="glyphicon glyphicon-plus"></span> Add new contact
 				</a>
-				<form class="form-inline pull-right">
+				<form class="form-inline pull-right" action="#" th:action="@{/contact/search}" method="get">
 					<div class="form-group">
-						<input type="text" class="form-control" name="criteria"
+						<input type="text" class="form-control" name="q"
 							placeholder="Type contact name..." />
 					</div>
 					<button type="submit" class="btn btn-primary">Search</button>
@@ -50,8 +50,8 @@
 							<td th:text="${contact.name}"></td>
 							<td th:text="${contact.email}"></td>
 							<td th:text="${contact.phone}"></td>
-							<td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a></td>
-							<td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+							<td><a th:href="@{/contact/{id}/edit(id=${contact.id})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+							<td><a th:href="@{/contact/{id}/delete(id=${contact.id})}"><span class="glyphicon glyphicon-trash"></span></a></td>
 						</tr>
 					</tbody>
 				</table>

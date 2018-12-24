@@ -1,1 +1,14 @@
-@charset "ISO-8859-1";
+@charset "UTF-8";
+
+body > div > div:nth-child(1) > a {
+	margin-bottom: 5px;	
+}
+
+.text-danger{
+	color: red;
+}
+
+.field-error {
+	border: 1px solid #ff0000;
+	margin-bottom: 10px;	
+}
