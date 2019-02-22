@@ -19,51 +19,51 @@ import com.ck.service.ContactService;
 
 @Controller
 public class ContactController {
-	
+
 	@Autowired
 	ContactService contactService;
-	
+
 	@GetMapping("/contact")
 	public String index(Model model) {
 		model.addAttribute("contacts", contactService.findAll());
 		return "list";
 	}
-	
+
 	@GetMapping("/contact/create")
 	public String create(Model model) {
 		model.addAttribute("contact", new Contact());
 		return "form";
 	}
-	
+
 	@PostMapping("/contact/save")
 	public String save(@Valid Contact contact, BindingResult result, RedirectAttributes redirect) {
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			return "form";
 		}
 		contactService.save(contact);
 		redirect.addFlashAttribute("success", "Saved contact successfully!");
 		return "redirect:/contact";
 	}
-	
+
 	@GetMapping("/contact/{id}/edit")
 	public String edit(@PathVariable int id, Model model) {
 		model.addAttribute("contact", contactService.findByID(id));
 		return "form";
 	}
-	
+
 	@GetMapping("/contact/{id}/delete")
 	public String delete(@PathVariable int id, RedirectAttributes redirect) {
 		contactService.delete(id);
-		redirect.addFlashAttribute("succsess", "Deleted contact successfully!");
+		redirect.addFlashAttribute("success", "Deleted contact successfully!");
 		return "redirect:/contact";
 	}
-	
+
 	@GetMapping("/contact/search")
 	public String search(@RequestParam("q") String q, Model model) {
-		if(q.equals("")) {
+		if (q.equals("")) {
 			return "redirect:/contact";
 		}
-		model.addAttribute("contact", contactService.search(q));
+		model.addAttribute("contacts", contactService.search(q));
 		return "list";
 	}
 }

@@ -54,6 +54,13 @@
 			<artifactId>jquery</artifactId>
 			<version>1.12.4</version>
 		</dependency>
+
+	<!--Live reload -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
